@@ -1,3 +1,2 @@
-webpack.config.js
-.eslintrc
-.gitignore
+src
+example
