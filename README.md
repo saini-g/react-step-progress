@@ -3,21 +3,26 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-> Multi step and dynamic progress indicator for react. Built using typescript, hooks and lots-o'-☕ and lots-o'-❤️
+> Multi step and dynamic progress indicator for react. Built using typescript, hooks and lots-o'-☕ and lots-o'-❤️ .
+> Uses CSS modules so you don't have to worry about your CSS class names clashing with ours
 
 ![React Step Progress demo](react-step-progress-demo.gif)
 
 ## Install
 
 ```
-npm install
+npm install --save react-step-progress
 ```
 
 ## Usage
 
-```
+> **NOTE:** I'm working towards an implementation where you don't have to import the stylesheet explicitly. I feel like that's not an ideal solution. Feel free to help me out 😁
+
+```javascript
 // import the progress bar
 import StepProgressBar from 'react-step-progress';
+// import the stylesheet
+import 'react-step-progress/dist/index.css';
 
 // setup the step content
 const step1Content = <h1>Step 1 Content</h1>;
@@ -26,11 +31,11 @@ const step3Content = <h1>Step 3 Content</h1>;
 
 // setup step validators, will be called before proceeding to the next step
 function step2Validator() {
-  // return boolean
+  // return a boolean
 }
 
 function step3Validator() {
-  // return boolean
+  // return a boolean
 }
 
 // render the progress bar

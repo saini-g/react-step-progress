@@ -1,6 +1,6 @@
 {
   "name": "react-step-progress",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Multi step and dynamic progress indicator for react",
   "keywords": [
     "react",
@@ -41,7 +41,6 @@
     "@types/react": "^16.9.27",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
-    "microbundle-crl": "^0.13.8",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
@@ -55,6 +54,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
+    "microbundle-crl": "^0.13.8",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
@@ -63,5 +63,6 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {}
 }

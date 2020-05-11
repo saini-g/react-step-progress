@@ -5,7 +5,7 @@ import { StepStates, ProgressStep, StepProgressProps, ReducerAction } from './mo
 
 function stepsReducer(steps: ProgressStep[], action: ReducerAction): ProgressStep[] {
 
-  return steps.map((step, i) => {
+  return steps.map(function(step, i) {
 
     if (i < action.payload.index) {
       return { ...step, state: StepStates.COMPLETED };
@@ -33,7 +33,7 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
   const [state, dispatch] = React.useReducer(stepsReducer, steps);
   const [currentIndex, setCurrentIndex] = React.useState(startingStep);
 
-  React.useEffect(function() {
+  React.useEffect(function () {
     dispatch({
       type: 'init',
       payload: { index: currentIndex, state: StepStates.CURRENT }
@@ -62,57 +62,54 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
 
   function prevHandler(): void {
     dispatch({
-      type: "previous",
+      type: 'previous',
       payload: {
         index: currentIndex - 1,
-        state: StepStates.CURRENT,
-      },
+        state: StepStates.CURRENT
+      }
     });
     setCurrentIndex(currentIndex - 1);
   }
 
   return (
     <div className={`${styles['progress-bar-wrapper']} ${wrapperClass || ''}`}>
-
       <ul className={`${styles['step-progress-bar']} ${progressClass || ''}`}>
-        {
-          state.map((step, i) => {
-            return (
-              <li
-                key={i}
-                className={`${styles['progress-step']}${
-                  step.state === StepStates.COMPLETED ? ` ${styles.completed}` : ''
-                }${
-                  step.state === StepStates.CURRENT ? ` ${styles.current}` : ''
-                }${
-                  step.state === StepStates.ERROR ? ` ${styles['has-error']}` : ''
-                } ${stepClass || ''}`}
-              >
-                {
-                  step.state === StepStates.COMPLETED && (
-                    <span className={styles['step-icon']}>
-                      Y
-                    </span>
-                  )
-                }
-                {
-                  step.state === StepStates.ERROR && (
-                    <span className={styles['step-icon']}>
-                      !
-                    </span>
-                  )
-                }
-                {
-                  step.state !== StepStates.COMPLETED &&
-                  step.state !== StepStates.ERROR && (
-                    <span className={styles['step-index']}>{i + 1}</span>
-                  )
-                }
-                <span className={styles['step-label']}>{step.label}</span>
-              </li>
-            );
-          })
-        }
+        {state.map(function(step, i) {
+          return (
+            <li
+              key={i}
+              className={`${
+                styles['progress-step']
+              }${
+                step.state === StepStates.COMPLETED ? ` ${styles.completed}` : ''
+              }${
+                step.state === StepStates.CURRENT ? ` ${styles.current}` : ''
+              }${
+                step.state === StepStates.ERROR ? ` ${styles['has-error']}` : ''
+              } ${
+                stepClass || ''
+              }`}
+            >
+              {step.state === StepStates.COMPLETED && (
+                <span className={styles['step-icon']}>
+                  <svg
+                    width="1.5rem"
+                    viewBox="0 0 13 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1 3.5L4.5 7.5L12 1" stroke="white" stroke-width="1.5"></path>
+                  </svg>
+                </span>
+              )}
+              {step.state === StepStates.ERROR && <span className={styles['step-icon']}>!</span>}
+              {step.state !== StepStates.COMPLETED && step.state !== StepStates.ERROR && (
+                <span className={styles['step-index']}>{i + 1}</span>
+              )}
+              <span className={styles['step-label']}>{step.label}</span>
+            </li>
+          );
+        })}
       </ul>
 
       <div className={`${styles['step-content']} ${contentClass || ''}`}>
@@ -149,9 +146,8 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
           Next
         </a>
       </div>
-
     </div>
   );
-};
+}
 
 export default StepProgressBar;

@@ -43,8 +43,10 @@
   height: 2.5rem;
   width: 2.5rem;
   line-height: 2.5rem;
-  display: inline-block;
+  display: inline-flex;
   transform-origin: center;
+  align-items: center;
+  justify-content: center;
 }
 .step-index, .step-icon {
   transition: background-color 250ms ease;
