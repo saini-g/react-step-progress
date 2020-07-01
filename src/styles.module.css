@@ -10,6 +10,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 .progress-step {
   list-style: none;
@@ -18,6 +20,7 @@
   flex: 1 1 auto;
   position: relative;
 }
+
 .progress-step::before {
   content: '';
   position: absolute;
