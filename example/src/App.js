@@ -1,6 +1,7 @@
 import React from 'react';
 
 import StepProgressBar from 'react-step-progress';
+import 'react-step-progress/dist/index.css';
 
 import './index.css';
 
