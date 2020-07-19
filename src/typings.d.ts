@@ -25,7 +25,7 @@ declare enum StepStates {
 
 interface ProgressStep {
   label: string;
-  subtitle: string;
+  subtitle?: string;
   name: string;
   state?: StepStates;
   content: React.ReactNode;

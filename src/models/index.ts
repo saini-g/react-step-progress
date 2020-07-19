@@ -7,7 +7,7 @@ export enum StepStates {
 
 export interface ProgressStep {
   label: string;
-  subtitle: string;
+  subtitle?: string;
   name: string;
   state?: StepStates;
   content: React.ReactNode;
