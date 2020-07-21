@@ -13,7 +13,7 @@ declare module '*.svg' {
   const svgUrl: string;
   const svgComponent: SvgrComponent;
   export default svgUrl;
-  export { svgComponent as ReactComponent }
+  export { svgComponent as ReactComponent };
 }
 
 declare enum StepStates {
@@ -25,6 +25,7 @@ declare enum StepStates {
 
 interface ProgressStep {
   label: string;
+  subtitle?: string;
   name: string;
   state?: StepStates;
   content: React.ReactNode;
@@ -37,6 +38,8 @@ interface StepProgressProps {
   wrapperClass?: string;
   progressClass?: string;
   stepClass?: string;
+  labelClass?: string;
+  subtitleClass?: string;
   contentClass?: string;
   buttonWrapperClass?: string;
   primaryBtnClass?: string;

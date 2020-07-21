@@ -22,6 +22,8 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
     wrapperClass,
     progressClass,
     stepClass,
+    labelClass,
+    subtitleClass,
     contentClass,
     buttonWrapperClass,
     primaryBtnClass,
@@ -79,21 +81,15 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
   return (
     <div className={`${styles['progress-bar-wrapper']} ${wrapperClass || ''}`}>
       <ul className={`${styles['step-progress-bar']} ${progressClass || ''}`}>
-        {state.map(function(step, i) {
+        {state.map(function (step, i) {
           return (
             <li
               key={i}
-              className={`${
-                styles['progress-step']
-              }${
+              className={`${styles['progress-step']}${
                 step.state === StepStates.COMPLETED ? ` ${styles.completed}` : ''
-              }${
-                step.state === StepStates.CURRENT ? ` ${styles.current}` : ''
-              }${
+              }${step.state === StepStates.CURRENT ? ` ${styles.current}` : ''}${
                 step.state === StepStates.ERROR ? ` ${styles['has-error']}` : ''
-              } ${
-                stepClass || ''
-              }`}
+              } ${stepClass || ''}`}
             >
               {step.state === StepStates.COMPLETED && (
                 <span className={styles['step-icon']}>
@@ -103,7 +99,7 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M1 3.5L4.5 7.5L12 1" stroke="white" stroke-width="1.5"></path>
+                    <path d="M1 3.5L4.5 7.5L12 1" stroke="white" strokeWidth="1.5"></path>
                   </svg>
                 </span>
               )}
@@ -111,7 +107,14 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
               {step.state !== StepStates.COMPLETED && step.state !== StepStates.ERROR && (
                 <span className={styles['step-index']}>{i + 1}</span>
               )}
-              <span className={styles['step-label']}>{step.label}</span>
+              <div className={`${styles['step-label']} ${labelClass || ''}`}>
+                {step.label}
+                {step.subtitle && (
+                  <div className={`${styles['step-label-subtitle']} ${subtitleClass || ''}`}>
+                    {step.subtitle}
+                  </div>
+                )}
+              </div>
             </li>
           );
         })}
@@ -123,29 +126,17 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
 
       <div className={`${styles['step-buttons']} ${buttonWrapperClass || ''}`}>
         <a
-          className={`${
-            styles['step-action-btn']
-          } ${
-            styles['action-btn-secondary']
-          } ${
+          className={`${styles['step-action-btn']} ${styles['action-btn-secondary']} ${
             currentIndex === 0 ? styles.disabled : ''
-          } ${
-            secondaryBtnClass || ''
-          }`}
+          } ${secondaryBtnClass || ''}`}
           onClick={prevHandler}
         >
           Previous
         </a>
         <a
-          className={`${
-            styles['step-action-btn']
-          } ${
-            styles['action-btn-primary']
-          } ${
+          className={`${styles['step-action-btn']} ${styles['action-btn-primary']} ${
             currentIndex === state.length - 1 ? styles.disabled : ''
-          } ${
-            primaryBtnClass || ''
-          }`}
+          } ${primaryBtnClass || ''}`}
           onClick={nextHandler}
         >
           Next
