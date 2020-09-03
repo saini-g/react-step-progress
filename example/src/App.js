@@ -25,6 +25,8 @@ function App() {
       <StepProgressBar
         startingStep={0}
         wrapperClass="progress-wrapper-custom"
+        previousBtnName="Πίσω"
+        nextBtnName="Επόμενο"
         steps={[
           {
             label: 'Step 1',

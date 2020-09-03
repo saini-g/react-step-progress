@@ -26,6 +26,8 @@ export interface StepProgressProps {
   buttonWrapperClass?: string;
   primaryBtnClass?: string;
   secondaryBtnClass?: string;
+  previousBtnName?: string;
+  nextBtnName?: string;
 }
 
 export interface ReducerAction {

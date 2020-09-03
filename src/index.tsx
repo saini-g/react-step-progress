@@ -27,7 +27,9 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
     contentClass,
     buttonWrapperClass,
     primaryBtnClass,
-    secondaryBtnClass
+    secondaryBtnClass,
+    previousBtnName,
+    nextBtnName
   } = props;
   const [state, dispatch] = React.useReducer(stepsReducer, steps);
   const [currentIndex, setCurrentIndex] = React.useState(startingStep);
@@ -131,7 +133,7 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
           } ${secondaryBtnClass || ''}`}
           onClick={prevHandler}
         >
-          Previous
+          {previousBtnName? previousBtnName : 'Previous'}
         </a>
         <a
           className={`${styles['step-action-btn']} ${styles['action-btn-primary']} ${
@@ -139,7 +141,7 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
           } ${primaryBtnClass || ''}`}
           onClick={nextHandler}
         >
-          Next
+          {nextBtnName ? nextBtnName : 'Next'}
         </a>
       </div>
     </div>
