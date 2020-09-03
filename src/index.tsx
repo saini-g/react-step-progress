@@ -27,7 +27,9 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
     contentClass,
     buttonWrapperClass,
     primaryBtnClass,
-    secondaryBtnClass
+    secondaryBtnClass,
+    submitBtnName,
+    onSubmit
   } = props;
   const [state, dispatch] = React.useReducer(stepsReducer, steps);
   const [currentIndex, setCurrentIndex] = React.useState(startingStep);
@@ -38,6 +40,10 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
       payload: { index: currentIndex, state: StepStates.CURRENT }
     });
   }, []);
+
+  function submitHandler(): void {
+    onSubmit();
+  }
 
   function nextHandler(): void {
     if (currentIndex === steps.length - 1) {
@@ -133,14 +139,25 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
         >
           Previous
         </a>
-        <a
-          className={`${styles['step-action-btn']} ${styles['action-btn-primary']} ${
-            currentIndex === state.length - 1 ? styles.disabled : ''
-          } ${primaryBtnClass || ''}`}
-          onClick={nextHandler}
-        >
-          Next
-        </a>
+        {currentIndex === state.length - 1 ? (
+          <a
+            className={`${styles['step-action-btn']} ${styles['action-btn-primary']} ${
+              primaryBtnClass || ''
+            }`}
+            onClick={submitHandler}
+          >
+            {submitBtnName ? submitBtnName : 'Submit'}
+          </a>
+        ) : (
+          <a
+            className={`${styles['step-action-btn']} ${styles['action-btn-primary']} ${
+              primaryBtnClass || ''
+            }`}
+            onClick={nextHandler}
+          >
+            Next
+          </a>
+        )}
       </div>
     </div>
   );

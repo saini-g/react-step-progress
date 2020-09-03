@@ -16,15 +16,21 @@ function step2Validator() {
 }
 
 function step3Validator() {
-  return false;
+  return true;
 }
 
 function App() {
+  const onSubmit = () => {
+    alert('submit data');
+  };
+
   return (
     <div class="app">
       <StepProgressBar
         startingStep={0}
         wrapperClass="progress-wrapper-custom"
+        onSubmit={onSubmit}
+        submitBtnName="Υποβολή"
         steps={[
           {
             label: 'Step 1',
