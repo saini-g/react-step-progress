@@ -28,6 +28,8 @@ export interface StepProgressProps {
   secondaryBtnClass?: string;
   submitBtnName?: string;
   onSubmit: Function;
+  previousBtnName?: string;
+  nextBtnName?: string;
 }
 
 export interface ReducerAction {

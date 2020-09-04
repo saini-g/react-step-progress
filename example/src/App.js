@@ -31,6 +31,8 @@ function App() {
         wrapperClass="progress-wrapper-custom"
         onSubmit={onSubmit}
         submitBtnName="Υποβολή"
+        previousBtnName="Πίσω"
+        nextBtnName="Επόμενο"
         steps={[
           {
             label: 'Step 1',
