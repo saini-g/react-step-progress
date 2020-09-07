@@ -26,6 +26,8 @@ export interface StepProgressProps {
   buttonWrapperClass?: string;
   primaryBtnClass?: string;
   secondaryBtnClass?: string;
+  submitBtnName?: string;
+  onSubmit: Function;
   previousBtnName?: string;
   nextBtnName?: string;
 }

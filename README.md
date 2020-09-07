@@ -38,9 +38,16 @@ function step3Validator() {
   // return a boolean
 }
 
+function onFormSubmit() {
+  // handle the submit logic here
+  // This function will be executed at the last step
+  // when the submit button (next button in the previous steps) is pressed
+}
+
 // render the progress bar
 <StepProgressBar
   startingStep={0}
+  onSubmit={onFormSubmit}
   steps={[
     {
       label: 'Step 1',
@@ -63,29 +70,40 @@ function step3Validator() {
       validator: step3Validator
     }
   ]}
-/>
+/>;
 ```
 
 ## Available Props
 
-* startingStep (`number`) - the index of the step at which to start
-* steps (`ProgressStep[]`) - array of steps with each step containing a label, name and content
-* wrapperClass (`string`) - CSS class name for progress wrapper element
-* progressClass (`string`) - CSS class name for progress bar element
-* stepClass (`string`) - CSS class name for step indicator
-* labelClass (`string`) - CSS class name for step label
-* subtitleClass (`string`) - CSS class name for step subtitle
-* contentClass (`string`) - CSS class name for step content element
-* buttonWrapperClass (`string`) - CSS class name for action buttons wrapper element
-* primaryBtnClass (`string`) - CSS class name for primary themed button
-* secondaryBtnClass (`string`) - CSS class name for secondary themed button
+### Required
+
+- startingStep (`number`) - the index of the step at which to start
+
+- steps (`ProgressStep[]`) - array of steps with each step containing a label, name and content
+
+- onSubmit (`function`) - function to be executed on the last step, simulating the submit of the form
+
+### Optional
+
+- wrapperClass (`string`) - CSS class name for progress wrapper element
+
+- progressClass (`string`) - CSS class name for progress bar element
+- stepClass (`string`) - CSS class name for step indicator
+- labelClass (`string`) - CSS class name for step label
+- subtitleClass (`string`) - CSS class name for step subtitle
+- contentClass (`string`) - CSS class name for step content element
+- buttonWrapperClass (`string`) - CSS class name for action buttons wrapper element
+- primaryBtnClass (`string`) - CSS class name for primary themed button
+- secondaryBtnClass (`string`) - CSS class name for secondary themed button
+- previousBtnName (`string`) - Change the text inside the previous button
+- nextBtnName (`string`) - Change the text inside the next button
 
 ## Author
 
 👤 **Gaurav Saini**
 
-* Github: [@saini-g](https://github.com/saini-g)
-* LinkedIn: [@saini-g](https://linkedin.com/in/saini-g)
+- Github: [@saini-g](https://github.com/saini-g)
+- LinkedIn: [@saini-g](https://linkedin.com/in/saini-g)
 
 ## Show your support
 

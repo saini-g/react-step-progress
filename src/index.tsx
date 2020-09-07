@@ -28,6 +28,8 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
     buttonWrapperClass,
     primaryBtnClass,
     secondaryBtnClass,
+    submitBtnName,
+    onSubmit,
     previousBtnName,
     nextBtnName
   } = props;
@@ -40,6 +42,10 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
       payload: { index: currentIndex, state: StepStates.CURRENT }
     });
   }, []);
+
+  function submitHandler(): void {
+    onSubmit();
+  }
 
   function nextHandler(): void {
     if (currentIndex === steps.length - 1) {
@@ -101,7 +107,7 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path d="M1 3.5L4.5 7.5L12 1" stroke="white" strokeWidth="1.5"></path>
+                    <path d="M1 3.5L4.5 7.5L12 1" stroke="white" strokeWidth="1.5" />
                   </svg>
                 </span>
               )}
@@ -133,16 +139,27 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
           } ${secondaryBtnClass || ''}`}
           onClick={prevHandler}
         >
-          {previousBtnName? previousBtnName : 'Previous'}
+          {previousBtnName ? previousBtnName : 'Previous'}
         </a>
-        <a
-          className={`${styles['step-action-btn']} ${styles['action-btn-primary']} ${
-            currentIndex === state.length - 1 ? styles.disabled : ''
-          } ${primaryBtnClass || ''}`}
-          onClick={nextHandler}
-        >
-          {nextBtnName ? nextBtnName : 'Next'}
-        </a>
+        {currentIndex === state.length - 1 ? (
+          <a
+            className={`${styles['step-action-btn']} ${styles['action-btn-primary']} ${
+              primaryBtnClass || ''
+            }`}
+            onClick={submitHandler}
+          >
+            {submitBtnName || 'Submit'}
+          </a>
+        ) : (
+          <a
+            className={`${styles['step-action-btn']} ${styles['action-btn-primary']} ${
+              primaryBtnClass || ''
+            }`}
+            onClick={nextHandler}
+          >
+            {nextBtnName ? nextBtnName : 'Next'}
+          </a>
+        )}
       </div>
     </div>
   );
