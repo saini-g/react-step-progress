@@ -4,14 +4,17 @@ import styles from './styles.module.css';
 import { StepStates, ProgressStep, StepProgressProps, ReducerAction } from './models';
 
 function stepsReducer(steps: ProgressStep[], action: ReducerAction): ProgressStep[] {
+
   return steps.map(function (step, i) {
+
     if (i < action.payload.index) {
-      return { ...step, state: StepStates.COMPLETED };
+      step.state = StepStates.COMPLETED;
     } else if (i === action.payload.index) {
-      return { ...step, state: action.payload.state };
+      step.state = action.payload.state;
     } else {
-      return { ...step, state: StepStates.NOT_STARTED };
+      step.state = StepStates.NOT_STARTED;
     }
+    return step;
   });
 }
 
@@ -48,10 +51,10 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
   }
 
   function nextHandler(): void {
+
     if (currentIndex === steps.length - 1) {
       return;
     }
-
     let isStateValid = true;
     const stepValidator = state[currentIndex].validator;
 
@@ -72,6 +75,7 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
   }
 
   function prevHandler(): void {
+
     if (currentIndex === 0) {
       return;
     }
