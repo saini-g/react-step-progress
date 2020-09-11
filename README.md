@@ -97,6 +97,7 @@ function onFormSubmit() {
 - secondaryBtnClass (`string`) - CSS class name for secondary themed button
 - previousBtnName (`string`) - Change the text inside the previous button
 - nextBtnName (`string`) - Change the text inside the next button
+- submitBtnName (`string`) - Change the text inside the submit button in the last step
 
 ## Author
 
