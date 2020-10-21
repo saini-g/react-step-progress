@@ -133,7 +133,7 @@ function StepProgressBar(props: StepProgressProps): JSX.Element {
       </ul>
 
       <div className={`${styles['step-content']} ${contentClass || ''}`}>
-        {state[currentIndex].content}
+        {props.steps[currentIndex].content}
       </div>
 
       <div className={`${styles['step-buttons']} ${buttonWrapperClass || ''}`}>
